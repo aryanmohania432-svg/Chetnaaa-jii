@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Chetna ji ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe4e6; /* Soft pink background */
+            font-family: 'Varela Round', sans-serif; /* Cute rounded font */
+            overflow: hidden;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .container {
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 90%;
+        }
+
+        h1 {
+            color: #db2777;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            max-width: 300px;
+            position: relative;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* Cute GIF below slideshow */
+        .extra-gif img {
+            width: 150px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; 
+        }
+
+        button {
+            padding: 15px 32px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Varela Round', sans-serif;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn {
+            background-color: #16a34a; /* Green for Go/Yes */
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background-color: #15803d;
+            transform: scale(1.05);
+        }
+
+        #noBtn {
+            background-color: #ef4444; /* Red for No */
+            color: white;
+        }
+
+        #noBtn:hover {
+            background-color: #b91c1c;
+        }
+
+        /* Hidden success message */
+        #success {
+            display: none;
+        }
+
+        /* Floating hearts animation background */
+        .heart {
+            position: absolute;
+            color: #f43f5e;
+            opacity: 0.5;
+            animation: float 6s infinite ease-in;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container" id="mainCard">
+        <h1>Chetna ji, will you be my Valentine?</h1>
+        
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="image_0.png" alt="Our sweet moment 1">
+            </div>
+            <div class="mySlides fade">
+                <img src="image_1.png" alt="Our sweet moment 2">
+            </div>
+            <div class="mySlides fade">
+                <img src="image_2.png" alt="Our sweet moment 3">
+            </div>
+        </div>
+
+        <div class="extra-gif">
+            <img src="https://media1.tenor.com/m/aKFaZkR7yWoAAAAC/cute-bear.gif" alt="Cute Bear created by Tenor">
+        </div>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="acceptLove()">Yes</button>
+            <button id="noBtn" onclick="rejectLove()">No</button>
+        </div>
+    </div>
+
+    <div class="container" id="success">
+        <div class="extra-gif">
+            <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Kisses created by Tenor">
+        </div>
+        <h1>Yay!!! I knew you'd say yes! ❤️</h1>
+        <p style="font-size: 1.5rem; color: #db2777;">I loveeeeeee youuuuuuu, Chetnaaaa jiii
+            
+            
+            
+            
+            i!</p>
+            <p style="font-size: 1.2rem; color: #db2777;">"Nazron se door sahi, par dil ki dhadkan mein ho,
+Tum meri wo aadat ho, jo har waqt mere mann mein ho."</p>
+    </div>
+
+    <script>
+        // --- Slideshow Logic ---
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // --- "Forced Yes" Button Logic ---
+        let yesSize = 1.2; // Initial size multiplier
+        let clickCount = 0;
+
+        // Cute messages for the No button
+        const messages = [
+            "No",
+            "Are you sure, Chetna ji?",
+            "Really sure?",
+            "Pookie please?",
+            "Don't do this to me :(",
+            "I'm gonna cry...",
+            "My heart is breaking...",
+            "Last chance!",
+            "Okay, I'll stop asking...",
+            "Just kidding, PLEASE say yes!",
+            "You can't say no to me :)"
+        ];
+
+        function rejectLove() {
+            clickCount++;
+            
+            // 1. Make the Yes button bigger
+            const yesBtn = document.getElementById('yesBtn');
+            // Increase font size and padding to make it grow
+            yesBtn.style.fontSize = (1.2 + clickCount * 0.5) + 'rem';
+            yesBtn.style.padding = (15 + clickCount * 5) + 'px ' + (32 + clickCount * 10) + 'px';
+
+            // 2. Change the No button text
+            const noBtn = document.getElementById('noBtn');
+            if (clickCount < messages.length) {
+                noBtn.innerText = messages[clickCount];
+            } else {
+                noBtn.innerText = messages[messages.length - 1]; // Stuck on last message
+            }
+        }
+
+        function acceptLove() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            createHearts();
+            // Ensure music plays if autoplay was blocked
+            var audio = document.getElementById("bgMusic");
+            audio.play();
+        }
+
+        // Create background hearts animation
+        function createHearts() {
+            for(let i=0; i<50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
